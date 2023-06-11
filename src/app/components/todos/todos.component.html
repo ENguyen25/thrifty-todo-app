@@ -1,0 +1,29 @@
+<div class="card shadow-lg mt-5">
+    <div class="card-header text-center">
+        <h1 class="display-6 fw-bold">To-Do List</h1>
+    </div>
+    <div class="card-body p-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter task" #titleInput>
+            <button class="btn" (click)="submit(titleInput)">
+                <fa-icon [icon]="faCirclePlus" size="2x"></fa-icon>
+            </button>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of todos">
+                <span>
+                    <span *ngIf="item.isDone == false" (click)="onStatusChange(item.id, !item.isDone)">
+                        <fa-icon [icon]="faCircle"></fa-icon>
+                    </span>
+                    <span *ngIf="item.isDone == true" (click)="onStatusChange(item.id, !item.isDone)">
+                        <fa-icon [icon]="faCircleCheck"></fa-icon>
+                    </span>
+                    {{item.title}}
+                    <button class="btn" (click)="onDelete(item.id)">
+                        <fa-icon [icon]="faTrashCan"></fa-icon>
+                    </button>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
